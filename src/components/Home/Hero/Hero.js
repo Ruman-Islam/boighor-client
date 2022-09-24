@@ -45,6 +45,7 @@ const Hero = () => {
     const sliderDivRef = useRef('');
     const indicatorDivRef = useRef();
     const length = sliderDiv.length;
+    console.log(featuredBooks);
 
     // FETCHING FEATURED BOOKS
     useEffect(() => {

@@ -6,13 +6,15 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useForm } from "react-hook-form";
 import auth from '../firebase/firebaseConfig';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import styles from '../styles/Login/Login.module.css';
 
 const Login = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
+    const [googleUser, ,] = useAuthState(auth);
+    console.log(googleUser);
 
     return (
         <section className={styles.login}>
