@@ -30,7 +30,7 @@ const NavBottom = () => {
 
     // FETCHING PUBLICATION LIST
     useEffect(() => {
-        fetch('http://localhost:5000/api/v1/book/publications')
+        fetch('https://boighor-server.vercel.app/api/v1/book/publications')
             .then(res => res.json())
             .then(({ result }) => {
                 setPublishers(result);
@@ -44,7 +44,7 @@ const NavBottom = () => {
 
     // FETCHING WRITER LIST
     useEffect(() => {
-        fetch('http://localhost:5000/api/v1/book/writers')
+        fetch('https://boighor-server.vercel.app/api/v1/book/writers')
             .then(res => res.json())
             .then(({ result }) => {
                 setAuthors(result);

@@ -4,7 +4,7 @@ import axios from 'axios';
 export const fetchUpdateRating = createAsyncThunk("ratingUpdateSlice/fetchUpdateRating", async (query) => {
     const { id } = query;
     const { rating } = query;
-    const url = `http://localhost:5000/api/v1/book/update_book_rating?id=${id}&rating=${rating}`
+    const url = `https://boighor-server.vercel.app/api/v1/book/update_book_rating?id=${id}&rating=${rating}`
     const { data } = await axios.patch(url)
     return data.result;
 });

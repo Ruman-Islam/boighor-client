@@ -7,7 +7,7 @@ const Dropdown = ({ props }) => {
 
     // FETCHING BESTSELLING BOOK
     useEffect(() => {
-        fetch('http://localhost:5000/api/v1/book/bestselling')
+        fetch('https://boighor-server.vercel.app/api/v1/book/bestselling')
             .then(res => res.json())
             .then(({ result }) => {
                 setMostSoldBook(result[0]);

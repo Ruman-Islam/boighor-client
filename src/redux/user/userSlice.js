@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
 
 export const fetchAUser = createAsyncThunk("userSlice/fetchAUser", async (email) => {
-    const { data } = await axios.get(`http://localhost:5000/api/v1/user//user-info?email=${email}`)
+    const { data } = await axios.get(`https://boighor-server.vercel.app/api/v1/user/user-info?email=${email}`)
     return data.result;
 });
 

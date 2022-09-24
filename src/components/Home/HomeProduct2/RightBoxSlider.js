@@ -15,7 +15,7 @@ const RightBoxSlider = () => {
 
     // GET SPECIAL OFFER DISCOUNT BOOKS
     useEffect(() => {
-        fetch('http://localhost:5000/api/v1/book/special-offer')
+        fetch('https://boighor-server.vercel.app/api/v1/book/special-offer')
             .then(res => res.json())
             .then(({ result }) => {
                 const specialOfferBooks = [];

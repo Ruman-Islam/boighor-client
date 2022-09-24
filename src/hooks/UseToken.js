@@ -20,6 +20,7 @@ const UseToken = user => {
                 try {
                     const { data } = await fetcher.put("user/social_login", useData);
                     const accessToken = data.accessToken;
+                    console.log(accessToken);
                     localStorage.setItem('accessToken', JSON.stringify(accessToken));
                     setToken(accessToken);
                 } catch (error) {

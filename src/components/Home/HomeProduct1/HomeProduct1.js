@@ -21,7 +21,7 @@ const HomeProduct1 = () => {
     // FETCHING FEATURED/NEW/MOST-VIEWED BOOKS
     useEffect(() => {
         setLoading(true);
-        fetch(`http://localhost:5000/api/v1/book${url}`)
+        fetch(`https://boighor-server.vercel.app/api/v1/book${url}`)
             .then(res => res.json())
             .then(({ result }) => {
                 setLoading(false);

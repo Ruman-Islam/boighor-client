@@ -23,7 +23,7 @@ const NavMiddle = () => {
         } else if (/^\s/.test(searchQuery)) {
             setSearchQuery('');
         } else {
-            fetch(`http://localhost:5000/api/v1/book/search?char=${searchQuery}`)
+            fetch(`https://boighor-server.vercel.app/api/v1/book/search?char=${searchQuery}`)
                 .then(res => res.json())
                 .then(({ result }) => dispatch(storeSearchedBooks(result)))
         }

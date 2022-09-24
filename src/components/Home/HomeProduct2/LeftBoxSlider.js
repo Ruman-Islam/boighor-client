@@ -12,7 +12,7 @@ const LeftBoxSlider = () => {
 
     // FETCHING NEW ARRIVAL BOOKS
     useEffect(() => {
-        fetch(`http://localhost:5000/api/v1/book/new`)
+        fetch(`https://boighor-server.vercel.app/api/v1/book/new`)
             .then(res => res.json())
             .then(({ result }) => {
                 setNewArrivalBooks(result);
@@ -24,7 +24,7 @@ const LeftBoxSlider = () => {
 
     // FETCHING FEATURED BOOKS
     useEffect(() => {
-        fetch(`http://localhost:5000/api/v1/book/featured`)
+        fetch(`https://boighor-server.vercel.app/api/v1/book/featured`)
             .then(res => res.json())
             .then(({ result }) => {
                 setFeaturedBooks(result);

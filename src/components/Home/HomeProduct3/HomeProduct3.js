@@ -16,7 +16,7 @@ const HomeProduct3 = () => {
 
     // FETCHING CHILDREN BOOKS
     useEffect(() => {
-        fetch('http://localhost:5000/api/v1/book/children')
+        fetch('https://boighor-server.vercel.app/api/v1/book/children')
             .then(res => res.json())
             .then(({ result }) => {
                 setChildrenBooks(result);
