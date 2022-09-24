@@ -1,0 +1,61 @@
+.mainBody {
+  padding-top: 150px;
+}
+.headerSection {
+  position: relative;
+}
+.mobileMenuContainer {
+  position: fixed;
+  background-color: #fff;
+  color: white;
+  top: 0;
+  height: 100vh;
+  transition: all 0.2s ease-in-out;
+  z-index: 99999;
+  box-shadow: 5px 5px 15px hsla(0, 0%, 0%, 0.3);
+  opacity: 0;
+}
+.drawerShow {
+  opacity: 1;
+  width: 250px;
+  left: 0;
+}
+.drawerHidden {
+  width: 0;
+  left: -100px;
+}
+.mobileMenuOverlay::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+.homeBtn {
+  background-color: #0397d3;
+  padding: 0.8rem 0.5rem;
+  font-size: 18px;
+  font-weight: 600;
+}
+.homeBtn a {
+  display: flex;
+  align-items: center;
+}
+.homeBtn span {
+  margin-left: 5px;
+}
+.crossBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
+}
+.mobileMenuLinksWrapper {
+  padding: 1rem;
+}
+.mobileMenuLinks li a {
+  color: var(--accent);
+  line-height: 2;
+}

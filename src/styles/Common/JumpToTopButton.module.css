@@ -1,0 +1,32 @@
+.scrollUpBtn {
+  position: fixed;
+  bottom: -4rem;
+  right: 2rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #3e444a;
+  transition: 0.5s ease-in-out;
+  padding: 1rem 1rem 0.5rem;
+  border-radius: 3px;
+  cursor: pointer;
+  z-index: 9999999999;
+}
+.scrollUpBtn:hover {
+  background-color: var(--secondary-color);
+  animation: scrollScaler 0.4s ease-in-out 1;
+}
+.scrollUpBtnShow {
+  bottom: 3rem;
+}
+
+@keyframes scrollScaler {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

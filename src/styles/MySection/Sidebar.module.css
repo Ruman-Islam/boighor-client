@@ -1,0 +1,56 @@
+/* Mobile Version */
+.sidebar_box {
+  flex-basis: 25%;
+}
+.profile_view {
+  margin-top: 20px;
+  background: #ffffff;
+  box-shadow: 0px 4px 6px -3px #9c9c9c;
+  border-radius: 3px;
+  padding: 20px;
+  display: flex;
+}
+.profile_info_thumb {
+  flex-basis: 25%;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+.profile_info_thumb img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+  border: #9c9c9c 1px solid;
+}
+.profile_info_content {
+  flex-basis: 75%;
+  font-family: "SiyamRupali", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  color: #333333;
+}
+.sidebar_menu {
+  margin-top: 20px;
+  background: #ffffff;
+  box-shadow: 0px 4px 6px -3px #9c9c9c;
+  border-radius: 3px;
+  padding: 20px;
+  padding: 0;
+}
+.sidebar_menu li a {
+  padding: 15px 20px;
+  display: block;
+  font-size: 120%;
+  border-bottom: 1px dotted #cdcdcd;
+  color: #333333;
+  transition: all 0.6s;
+  font-family: "Roboto", sans-serif;
+}
+.sidebar_menu li:hover a {
+  color: #0397d3;
+}
+.sidebar_menu .active {
+  color: #5dc16d;
+  background: linear-gradient(to right, #ffffff 0%, #deffe4 100%);
+}

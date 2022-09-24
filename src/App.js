@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import PrivateRoute from './authentication/PrivateRoute';
+import Layout from './components/Layout/Layout';
+import ScrollToTop from './hooks/UseScrollTop';
+import Footer from './layouts/Footer';
+import Navbar from './layouts/Navbar';
+import MySection from './pages/MySection';
+import { privateRoutes } from './routes/privateRoutes';
+import { publicRoutes } from './routes/publicRoutes';
+import './styles/Global.css';
 
 function App() {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ScrollToTop />
+      <Navbar />
+      <Layout>
+        <Routes>
+          {/* Public routes */}
+          {publicRoutes.map(({ path, Component }, index) => (
+            <Route key={index} path={path} element={<Component />} />))}
+          {/* Private routes */}
+          <Route element={<PrivateRoute />}>
+            <Route path='/my-section' element={<MySection />}>
+              {privateRoutes.map(({ path, name, Component }, index) => (
+                <Route key={index} path={path} index={name === 'Home'} element={<Component />} />))}
+            </Route>
+          </Route>
+        </Routes>
+      </Layout>
+      <Footer />
+    </>
   );
 }
 

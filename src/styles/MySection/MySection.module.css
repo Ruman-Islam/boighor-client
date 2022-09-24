@@ -1,0 +1,10 @@
+.mySection {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem !important;
+  gap: 30px;
+}
+.outlet {
+  flex-basis: 75%;
+}

@@ -1,0 +1,122 @@
+import Rating from 'react-rating';
+import { Link } from 'react-router-dom';
+import StarRateIcon from '@mui/icons-material/StarRate';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import StarRateOutlinedIcon from '@mui/icons-material/StarRateOutlined';
+import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+import likeIcon from '../../assets/images/like-svgrepo-com.svg'
+import heartIcon from '../../assets/images/heart-outline-svgrepo-com.svg';
+import styles from '../../styles/BookDetail/BookDetail.module.css';
+
+const BasicInfo = ({ rating, book }) => {
+    return (
+        <div className={styles.basicInfoContainer}>
+            <div className={styles.basicInfoInner}>
+                <h1 className={styles.title}>
+                    {book?.title} <span>({book?.copy_version})</span>
+                </h1>
+                <p className={styles.author}>
+                    <span>by </span>
+                    <Link to='/'>
+                        {book?.author?.length > 135 ?
+                            `${book?.author?.slice(0, 132)}...` :
+                            book?.author}
+                    </Link>
+                </p>
+                <p className={styles.category}>
+                    <span>Category:</span>
+                    <Link to='/'>
+                        {book?.category > 50 ?
+                            `${book?.category?.slice(0, 132)}...` :
+                            book?.category}
+                    </Link>
+                </p>
+                <p className={styles.rating}>
+                    <Rating
+                        className={styles.star}
+                        initialRating={rating ? rating : 0}
+                        emptySymbol={<StarRateOutlinedIcon />}
+                        fullSymbol={<StarRateIcon />}
+                        readonly>
+                    </Rating>
+                    <span className={styles.starText}>
+                        {rating ? rating : 0}
+                        <Link to='/'>
+                            / {book?.reviews?.length} Reviews
+                        </Link>
+                    </span>
+                </p>
+                <p className={styles.price}>
+                    {!!book?.original_price &&
+                        <span className={styles.original_price}>TK. {book?.original_price}</span>
+                    }
+                    {!!book?.sell_price &&
+                        <span className={styles.sell_price}>TK.{book?.sell_price}</span>
+                    }
+                    {!!book?.original_price &&
+                        <span className={styles.savings}>You Save TK. 21 (14%)</span>
+                    }
+                </p>
+                {!!book?.quantity <= 0 ?
+                    <p className={styles.outStock}>
+                        <RadioButtonUncheckedIcon className={styles.crossSign} />
+                        <span> Out of Stock</span> <br />
+                        <span className={styles.requestText}> আপনার অনুরোধের বইটা সাপ্লাইয়ারের নিকট থেকে সংগ্রহ করে আনতে আমাদের ৩০ থেকে ৬০ কর্মদিবস সময় লেগে যেতে পারে। আপনার পক্ষে এত সময় অপেক্ষা করা সম্ভব হলে, অর্ডার করার অনুরোধ জানাচ্ছি।</span>
+                    </p> :
+                    <p className={styles.inStock}>
+                        <CheckCircleIcon className={styles.rightSign} />
+                        <span> In Stock</span>
+                        <span className={styles.availabilityWarning}> (only {book?.quantity}
+                            {!book?.quantity <= 1 ? ' copies' : ' copy'} available)
+                        </span>
+                    </p>}
+                {!!book?.quantity &&
+                    <p className={styles.stockWarning}>* স্টক আউট হওয়ার আগেই অর্ডার করুন</p>}
+                {!!book?.offers?.length &&
+                    <div className={styles.offers}>
+                        <span>Offers:</span>
+                        <select defaultValue={0}>
+                            {book?.offers?.map((offer, index) => {
+                                return (
+                                    <option className={styles.option}
+                                        key={index} value={offer}>
+                                        {offer}
+                                    </option>
+                                )
+                            })}
+                        </select>
+                    </div>}
+                <div className={styles.actionBtnContainer}>
+                    <Link to="/" className={styles.detailLookBtn}>একটু পড়ে দেখুন</Link>
+                    <Link to="/" className={styles.addToCartBtn}>
+                        <ShoppingCartIcon />
+                        <span> Add to Cart</span>
+                    </Link>
+                </div>
+                <div className={styles.actionBtnContainer2}>
+                    <Link to="/" className={styles.detailLookBtn2}>একটু পড়ে দেখুন</Link>
+                    <Link to="/" className={styles.addToCartBtn2}>
+                        <span> Add to Cart</span>
+                    </Link>
+                </div>
+                <div className={styles.wishListBox}>
+                    <div>
+                        <Link to="/" className={styles.addToWishBtn}>
+                            <img width={15} height={15} src={heartIcon} alt="" />
+                            <span> Add to Booklist</span>
+                        </Link>
+                    </div>
+                    <div>
+                        <Link to="/" className={styles.addToWishBtn}>
+                            <img width={20} height={20} src={likeIcon} alt="" />
+                            <span> Recommend This Book</span>
+                        </Link>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default BasicInfo;

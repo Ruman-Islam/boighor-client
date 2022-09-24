@@ -1,0 +1,79 @@
+@import url("https://fonts.maateen.me/siyam-rupali/font.css");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+html,
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: "SiyamRupali", "Roboto", sans-serif;
+  text-decoration: none;
+  scroll-behavior: smooth;
+}
+
+/* a {
+    color: inherit;
+}   */
+
+/* All colors */
+:root {
+  --primary-color: #61ab00;
+  --secondary-color: #f00043;
+  --accent: #1b1f23;
+  --neutral: #bebebe;
+}
+/* .............. */
+
+body img {
+  width: 100%;
+  height: 100%;
+}
+body {
+  position: relative;
+  background: #f1f2f4;
+}
+li {
+  display: list-item;
+}
+
+.box-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+}
+
+#dropdown-show {
+  opacity: 1;
+  visibility: visible;
+}
+#dropdown-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* These classes are for fixed the footer position at bottom */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 98vh;
+}
+/* .content-wrap {
+  flex: 1 !important;
+} */
+/* .................................................... */
+
+/* All slides bullet styles */
+.swiper-pagination-bullet {
+  /* display: inline-block !important; */
+  background-color: var(--accent) !important;
+  width: 10px !important;
+  height: 10px !important;
+}
+.swiper-pagination-bullet:hover {
+  background-color: var(--secondary-color) !important;
+}
+.swiper-pagination-bullet-active {
+  background-color: var(--secondary-color) !important;
+}

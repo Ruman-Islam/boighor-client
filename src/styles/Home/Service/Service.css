@@ -1,0 +1,96 @@
+/* ........Mobile Responsive............ */
+/* ..................................... */
+.service-wrapper {
+  margin-top: 10px;
+  background: #fff;
+  padding: 1.2rem;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px -3px #9c9c9c;
+}
+.service-upper {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+.service-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.service-upper div:nth-child(2) {
+  margin-left: 0;
+  margin-right: 0;
+}
+.service-upper div:nth-child(3) {
+  margin-left: 0;
+  margin-right: 0;
+}
+.service-box {
+  border: 2px solid #eee;
+  padding: 0.8rem 1rem;
+  margin-bottom: 10px;
+}
+.service-box div:first-child {
+  color: var(--secondary-color);
+  font-size: 2rem;
+}
+.service-box div:last-child {
+  color: var(--accent);
+  padding-left: 0.5rem;
+  flex: 1;
+  font-weight: 200;
+}
+.service-box div:last-child p:last-child {
+  color: var(--neutral);
+  font-weight: 400;
+}
+
+.service-lower {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 15px 0 0;
+  object-fit: cover;
+}
+/* ..................................... */
+/* ...................................... */
+
+/* ........Desktop & Laptop Responsive........... */
+/* .............................................. */
+@media only screen and (min-width: 821px) {
+  .service-wrapper {
+    margin-top: 0px;
+  }
+  .service-upper {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .service-upper div:nth-child(2) {
+    margin-left: 10px;
+    margin-right: 5px;
+  }
+  .service-upper div:nth-child(3) {
+    margin-left: 5px;
+    margin-right: 10px;
+  }
+  .service-lower {
+    flex-direction: row;
+  }
+  /* ............................ */
+}
+/* ..................................... */
+/* ...................................... */
+
+/* ........Tablet & Pad Responsive........... */
+/* ......................................... */
+@media only screen and (min-width: 768px) and (max-width: 820px) {
+  .service-wrapper {
+    margin-top: 820px;
+  }
+  .service-upper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .service-lower img {
+    width: 800px !important;
+  }
+}
+/* ..................................... */
+/* ...................................... */

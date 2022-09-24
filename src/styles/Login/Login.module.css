@@ -1,0 +1,162 @@
+/* ........Mobile Responsive............ */
+/* ..................................... */
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.loginInner {
+  width: 100%;
+  background: #fff;
+  padding: 3rem 2rem;
+  filter: drop-shadow(rgba(65, 64, 64, 0.3) 0 2px 10px);
+  border-radius: 5px;
+  line-height: 30px;
+}
+.loginDropdown {
+  width: 100%;
+}
+.loginDropdownHelpText {
+  font-size: 14px;
+  padding: 4px 0;
+  color: #666666;
+  text-align: center;
+}
+.login_dropdown_btn_group {
+  width: 100%;
+  margin-top: 7px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ececec;
+  display: flex;
+  /* flex-direction: column !important; */
+  align-items: center;
+  justify-content: space-around;
+}
+.login_dropdown_btn_group button:first-child,
+.login_dropdown_btn_group button:last-child {
+  color: #ffffff;
+  font-weight: 500;
+  flex-basis: 47%;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  outline: 0;
+  border: 0;
+  border-radius: 0.25rem;
+  justify-content: center;
+}
+.login_dropdown_btn_group button:first-child:hover,
+.login_dropdown_btn_group button:last-child:hover,
+.login_btn:hover {
+  opacity: 0.8;
+}
+.login_dropdown_btn_group button:first-child {
+  background-color: #3b5999;
+}
+.login_dropdown_btn_group button:last-child {
+  background-color: #dd4832;
+}
+.login_dropdown_btn_group button:first-child svg,
+.login_dropdown_btn_group button:last-child svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.3rem;
+}
+.input_group {
+  margin-bottom: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: 100%;
+  padding: 0.2rem 0;
+  border-bottom: 2px solid #eaeced;
+}
+.input_group_prepend {
+  display: flex;
+  margin-right: 3px;
+  margin-top: 4px;
+  align-items: center;
+}
+.input_group_prepend span svg {
+  width: 18px;
+  height: 16px;
+}
+.input_group input {
+  width: 90%;
+  font-size: 14px;
+  border: none;
+  border-radius: 0;
+  outline: 0;
+  line-height: -2;
+}
+.input_group input::placeholder,
+.input_group_prepend span svg {
+  color: #bebebe;
+}
+.input_group input::placeholder {
+  font-size: 14px;
+  line-height: 50px;
+}
+.create_account_link {
+  text-decoration: underline;
+}
+.forgot_pass_link {
+  font-size: 12px;
+  margin: 12px 0;
+  font-weight: 700;
+}
+.create_account_link,
+.forgot_pass_link {
+  color: #0397d3;
+  cursor: pointer;
+}
+.login_btn {
+  display: block;
+  width: 100%;
+  border: 0;
+  padding: 0.5rem 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #33c24d;
+  margin-top: 5px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.formFooter {
+  margin: 20px;
+  text-align: center;
+}
+.formFooter p span:first-child {
+  font-style: italic;
+  margin-right: 10px;
+}
+.formFooter p span:last-child {
+  color: #0397d3;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+/* ..................................... */
+/* ...................................... */
+
+/* ........Desktop & Laptop Responsive........... */
+/* .............................................. */
+@media only screen and (min-width: 821px) {
+  .login {
+    height: 70vh;
+  }
+  .loginInner {
+    width: 30%;
+  }
+}
+/* ..................................... */
+/* ...................................... */
+
+/* ........Tablet & Pad Responsive........... */
+/* ......................................... */
+@media only screen and (min-width: 768px) and (max-width: 820px) {
+}
+/* ..................................... */
+/* ...................................... */

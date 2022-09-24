@@ -1,0 +1,408 @@
+/* ........Mobile Responsive............ */
+/* ..................................... */
+/* HeaderNav styles */
+.navBottomContainer {
+  width: 100%;
+  display: none;
+  border-bottom: #cecfd1 solid 1px;
+  background: #fff;
+}
+.navBottomWrapper {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.navBottomLeftBox {
+  flex-basis: 50%;
+}
+.navBottomRightBox {
+  flex-basis: 50%;
+  display: flex;
+  justify-content: right;
+}
+.navBottomLeftBox,
+.support-center-contact-box,
+.navBottomRightBox ul {
+  display: flex;
+  align-items: center;
+  color: var(--neutral);
+}
+.navBottomRightBox ul li {
+  color: var(--accent);
+  text-transform: capitalize;
+  padding: 0.2rem;
+  margin-right: 1rem;
+  font-weight: 500;
+}
+.navBottomRightBox .navChevronUpIcon,
+.navChevronDownIcon {
+  margin-left: 5px;
+  font-size: 0.7rem !important;
+}
+.navBottomRightBox .navChevronUpIcon {
+  display: none;
+}
+/* .navBottomRightBox .navChevronUpIcon {
+    display: inline-block;
+} */
+.navBottomRightBox .navLink a {
+  color: var(--accent);
+  transition: 0.3s;
+}
+.navBottomRightBox .navLink:hover a {
+  color: var(--primary-color);
+  transition: 0.3s;
+}
+.navBottomLeftBox {
+  justify-content: space-between;
+}
+.browseCategoryBtnWrapper {
+  padding: 0.8rem 1.8rem;
+  position: relative;
+}
+.browseCategoryBtnWrapper button {
+  background-color: transparent;
+  border: 0;
+  color: var(--accent);
+  font-weight: 500;
+  cursor: pointer;
+  text-transform: capitalize;
+  transition: all 0.3s linear;
+}
+.browseCategoryBtnWrapper button:first-child:hover {
+  color: var(--primary-color) !important;
+}
+.browseCategoryBtnWrapper button span {
+  margin: 0 6px;
+}
+.browseCategoryDropdown {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 45px;
+  margin: 0;
+  border: 2px solid #eee;
+  background: white;
+  padding: 0 20px;
+  transition: 0.3s;
+  z-index: 9999;
+}
+.browseCategoryDropdown li {
+  border-bottom: 1px solid #eeeeee;
+  padding: 1rem 0.5rem;
+  cursor: pointer;
+}
+.browseCategoryDropdown li button {
+  color: black;
+  font-weight: 200;
+  font-size: 0.8rem;
+}
+.browseCategoryDropdown li:hover button {
+  color: var(--primary-color);
+  transform: translateX(10px);
+  transition: 0.2s all;
+}
+.browseCategoryDropdown li:last-child {
+  border: 0;
+}
+.support-center-contact-box {
+  display: flex;
+  font-size: 1.1rem;
+}
+.support-center-contact-box div:last-child p:last-child {
+  font-weight: 700;
+}
+.support-center-icon {
+  font-size: 2.5rem;
+  margin-right: 1rem;
+}
+
+.megaBox {
+  left: 0;
+  right: 0;
+  height: 0;
+  top: 40px;
+  width: 100%;
+  opacity: 0;
+  z-index: 999;
+  margin-left: auto;
+  position: absolute;
+  visibility: hidden;
+  transition: 0.3s linear;
+  padding-top: 20px;
+  background-color: transparent;
+}
+.megaBox .megaBoxContent {
+  width: 100%;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 2px solid var(--primary-color);
+  background: var(--accent);
+  padding: 1.5rem;
+  display: flex;
+  position: relative;
+}
+.megaBox .megaLinks {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 1 70%;
+}
+.dropdownBookContainer {
+  flex: 1 1 30%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dropdownBookContainer .dropdownBookInner {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 3px;
+  position: relative;
+  display: flex;
+  padding: 0.5rem;
+}
+.dropdownBookInner .dropdownImg {
+  flex: 1 1 40%;
+  position: relative;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dropdownBookInner .dropdownImg img {
+  max-width: 100px;
+  max-height: 150px;
+  border-radius: 3px;
+}
+.dropdownBookInner .dropdownImg::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.301);
+  opacity: 0;
+}
+.dropdownBookContainer:hover .dropdownImg::after {
+  opacity: 1;
+  transition: all 0.3s;
+}
+.dropdownBookInner .dropdownBookTextBox {
+  flex: 1 1 90%;
+  padding: 1rem;
+}
+.dropdownBookTextBox a:first-child {
+  color: var(--neutral) !important;
+  font-size: 12px;
+  transition: all 0.5s;
+}
+.dropdownBookTextBox a:first-child:hover {
+  color: var(--accent) !important;
+}
+.dropdownBookTextBox a:nth-child(2) {
+  /* display: block; */
+  color: var(--accent) !important;
+  line-height: 1.8rem;
+  font-size: 0.9rem;
+  transition: all 0.5s;
+}
+.dropdownBookTextBox a:nth-child(2):hover {
+  /* display: block; */
+  color: var(--primary-color) !important;
+}
+.dropdownBookTextBox .dropdownBookPrice {
+  font-size: 1.3rem;
+  color: var(--secondary-color);
+}
+.dropdownBookTextBox p:nth-child(2) {
+  font-size: 1rem;
+}
+.dropdownBookTextBox div:nth-child(4) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dropdownBookTextBox div:nth-child(4) small {
+  text-decoration: line-through;
+  color: var(--neutral);
+  font-size: 1rem;
+}
+.dropdownBookTextBox div:nth-child(4) div {
+  color: #fff;
+  padding: 0.1rem 0.4rem;
+  font-weight: 500;
+  font-size: 1.2rem;
+  border-radius: 4px;
+  background-color: #bd0117;
+}
+.megaBox .megaLinks li {
+  width: 180px;
+}
+.megaBox .megaLinks li > a {
+  color: #999 !important;
+  font-size: 0.9rem;
+}
+.megaBox .megaLinks li > a:hover {
+  color: var(--primary-color) !important;
+  text-decoration: underline;
+  transition: all 0.3s;
+}
+.writer a,
+.publication a,
+.browseCategoryBtnWrapper button {
+  display: flex;
+  align-items: center;
+}
+.writer svg,
+.publication svg,
+.browseCategoryBtnWrapper button svg {
+  width: 20px;
+  height: 20px;
+}
+.navBottomRightBox .writer:hover .megaBox {
+  height: 280px;
+  opacity: 1;
+  visibility: visible;
+}
+.writer:hover .navChevronUpIcon,
+.publication:hover .navChevronUpIcon {
+  display: inline-block;
+}
+.writer:hover .navChevronDownIcon,
+.publication:hover .navChevronDownIcon {
+  display: none;
+}
+.navBottomRightBox .publication:hover .megaBox {
+  height: 280px;
+  opacity: 1;
+  visibility: visible;
+}
+.navBottomRightBox .writer:hover > a {
+  cursor: pointer;
+}
+.seeMoreBtn {
+  color: var(--primary-color);
+  font-size: 0.8rem !important;
+  position: absolute;
+  left: 27px;
+  bottom: 5px;
+}
+.seeMoreBtn:hover {
+  color: var(--neutral);
+  transition: 0.5s;
+}
+.ribbon {
+  color: black;
+  width: 110px;
+  height: 110px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  overflow: hidden;
+}
+.ribbon span {
+  width: 225px;
+  padding: 8px 0;
+  background-color: var(--primary-color);
+  display: block;
+  position: absolute;
+  top: 30px;
+  left: -40px;
+  transform: rotate(45deg);
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+.ribbon::after,
+.ribbon::before {
+  content: "";
+  border-top: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 5px solid green;
+  border-left: 5px solid green;
+  position: absolute;
+  /* left: 5px; */
+}
+.ribbon::before {
+  bottom: 0;
+  right: 0;
+}
+/* ..................................... */
+/* ...................................... */
+
+/* ........Desktop & Laptop Responsive........... */
+/* .............................................. */
+@media only screen and (min-width: 821px) {
+  /* HeaderNav styles */
+  .navBottomContainer {
+    display: block;
+  }
+  .navBottomContainerHide {
+    display: none;
+  }
+  .navBottomLeftBox {
+    flex-basis: 40%;
+  }
+  .navBottomRightBox {
+    flex-basis: 60%;
+  }
+  .navBottomRightBox ul li a {
+    font-size: 1rem;
+  }
+  .support-center-contact-box {
+    /* display: none; */
+    font-size: 1rem;
+  }
+  .browseCategoryBtnWrapper button {
+    font-size: 1rem;
+  }
+  .support-center-icon {
+    font-size: 1.8rem;
+    margin-right: 1rem;
+  }
+  /* ............................ */
+}
+/* ..................................... */
+/* ...................................... */
+
+/* ........Tablet & Pad Responsive........... */
+/* ......................................... */
+@media only screen and (min-width: 768px) and (max-width: 820px) {
+  /* HeaderNav styles */
+  .header-nav-wrapper {
+    padding: 0.6rem;
+  }
+  .navBottomLeftBox {
+    flex-basis: 40%;
+  }
+  .navBottomRightBox {
+    flex-basis: 60%;
+  }
+  .navBottomRightBox ul li a {
+    font-size: 1rem;
+  }
+  .navBottomRightBox .navChevronUpIcon {
+    font-size: 1rem;
+  }
+  .support-center-contact-box {
+    display: none;
+  }
+  .browseCategoryBtnWrapper button {
+    font-size: 1rem;
+  }
+  .support-center-icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+  }
+  /* ............................ */
+}
+/* ..................................... */
+/* ...................................... */

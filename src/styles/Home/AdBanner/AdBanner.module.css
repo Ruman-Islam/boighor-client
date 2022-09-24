@@ -1,0 +1,68 @@
+/* ..........Mobile Responsive............ */
+/* ....................................... */
+.adBannerWrapper {
+  margin-top: 3rem !important;
+  margin-bottom: 3rem !important;
+  position: relative;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px -3px #9c9c9c;
+  padding: 1rem;
+}
+.adText {
+  max-width: fit-content;
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 20px;
+}
+.adText h2 {
+  font-size: 1rem;
+}
+.adText p {
+  font-size: 0.8rem;
+}
+/* ....................................... */
+/* ....................................... */
+
+/* ........Desktop & Laptop Responsive........... */
+/* .............................................. */
+@media only screen and (min-width: 821px) {
+  .adBannerWrapper {
+    margin-top: 4rem;
+  }
+  .adText {
+    margin-left: 100px;
+    top: 90px;
+    line-height: 40px;
+  }
+  .adText h2 {
+    font-size: 2.2rem;
+  }
+  .adText p {
+    font-size: 1.2rem;
+    font-family: monospace;
+  }
+}
+/* ..................................... */
+/* ...................................... */
+
+/* ........Tablet & Pad Responsive........... */
+/* ......................................... */
+@media only screen and (min-width: 768px) and (max-width: 820px) {
+  .adText {
+    top: 50px;
+    line-height: 40px;
+  }
+  .adText h2 {
+    font-size: 2rem;
+  }
+  .adText p {
+    font-size: 1.5rem;
+  }
+}
+/* ..................................... */
+/* ...................................... */

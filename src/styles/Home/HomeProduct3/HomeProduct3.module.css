@@ -1,0 +1,152 @@
+/* ........Mobile Responsive............ */
+/* ..................................... */
+.homeProductSection3Container {
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px -3px #9c9c9c;
+  padding: 1rem;
+}
+.homeProductSection3Title {
+  position: relative;
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 56px;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.title {
+  position: relative;
+  text-transform: uppercase;
+  font-size: 20px;
+  margin: 0;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 30px;
+  padding-bottom: 31px;
+  font-weight: 500;
+}
+.title::after {
+  content: "";
+  position: absolute;
+  width: 170px;
+  height: 2px;
+  background: #f00043;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  margin: auto;
+  max-width: 100%;
+}
+.newArrivals {
+  margin-bottom: 205px;
+  border-radius: 4px;
+}
+.newArrivals p:first-child {
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 25px;
+}
+.newArrivalsSlider {
+  padding: 0.5rem 0 4rem;
+}
+.newArrivalBook {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.1rem;
+  position: relative;
+}
+.newArrivalBook::after {
+  content: "";
+  position: absolute;
+  height: 0%;
+  right: -0.5rem;
+  border-right: var(--neutral) 1px solid;
+}
+.newArrivalBookImg {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.newArrivalBookImg img {
+  width: 80px !important;
+  height: 120px !important;
+  object-fit: cover;
+}
+.specialBookDetails {
+  display: flex;
+  flex-direction: column;
+  flex: 2 !important;
+  padding-left: 0.8rem;
+}
+.specialBookDetails a:first-child {
+  font-size: 0.8rem;
+  line-height: 20px;
+  color: var(--neutral);
+  transition: all 0.5s;
+}
+.specialBookDetails a:first-child:hover {
+  color: var(--accent);
+}
+.specialBookDetails a:nth-child(2) {
+  font-size: 0.9rem;
+  color: var(--accent);
+  transition: all 0.5s;
+}
+.specialBookDetails a:nth-child(2):hover {
+  color: var(--primary-color);
+}
+.specialBookPriceBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 0;
+}
+.specialBookPriceBox p:nth-child(1) {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--secondary-color);
+}
+.specialBookPriceBox p:nth-child(1) span {
+  margin-left: 0.2rem;
+  font-size: 0.9rem;
+  text-decoration: line-through;
+  color: var(--neutral);
+}
+.discount {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 0.2rem 0.6rem;
+  background-color: #bd0117;
+}
+.sliderWrapper {
+  height: 26rem;
+}
+.slider {
+  height: 200px;
+}
+/* ..................................... */
+/* ...................................... */
+
+/* ........Desktop & Laptop Responsive........... */
+/* .............................................. */
+@media only screen and (min-width: 821px) {
+  .newArrivalBook::after {
+    height: 70%;
+  }
+  .newArrivalBook {
+    width: 360px;
+    padding: 0 1rem;
+  }
+}
+/* ..................................... */
+/* ...................................... */
+
+/* ........Tablet & Pad Responsive........... */
+/* ......................................... */
+
+/* ..................................... */
+/* ...................................... */
