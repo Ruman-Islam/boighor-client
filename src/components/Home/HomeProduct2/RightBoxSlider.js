@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -10,14 +11,18 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 import styles from '../../../styles/Home/HomeProduct2/HomeProduct2.module.css';
 import { Link } from 'react-router-dom';
+import fetcher from '../../../api/axios';
+import { addToLocalStorage } from '../../../Utils/shopping_cart';
+import Swal from 'sweetalert2';
+
 const RightBoxSlider = () => {
     const [books, setBooks] = useState([]);
 
     // GET SPECIAL OFFER DISCOUNT BOOKS
     useEffect(() => {
-        fetch('https://boighor-server.vercel.app/api/v1/book/special-offer')
-            .then(res => res.json())
-            .then(({ result }) => {
+        (async () => {
+            try {
+                const { data: { result } } = await fetcher.get("book/special-offer")
                 const specialOfferBooks = [];
                 for (const book of result) {
                     if (book?.current_discount >= 25) {
@@ -25,12 +30,26 @@ const RightBoxSlider = () => {
                     }
                 }
                 setBooks(specialOfferBooks);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
+            } catch (error) {
+                console.log(error);
+            }
+        })()
     }, []);
     // .........................................
+
+    const addToCart = (book) => {
+        // const order = {
+        //     user_name: user?.displayName,
+        //     email: user?.email,
+        //     products: [
+        //         { product_id: book?._id, price: book?.sell_price, status: 'pending' }
+        //     ]
+        // }
+        // console.log(order);
+        addToLocalStorage(book?._id)
+        Swal.fire('Your book was added to cart')
+    }
+
     return (
         <div className={styles.productLeftBox}>
             <div className={styles.specialOffer}>
@@ -62,7 +81,7 @@ const RightBoxSlider = () => {
                             <SwiperSlide key={index}>
                                 <div className={styles.spacialBook}>
                                     <div className={styles.specialBookTitles}>
-                                        <Link to="/">{book?.publisher}</Link>
+                                        <Link to={`/category/${book?.publisher}`}>{book?.publisher}</Link>
                                         <Link to={`/book/${book?._id}`}>{book?.title?.slice(0, 31)}</Link>
                                     </div>
                                     <div className={styles.bookDetail}>
@@ -85,16 +104,18 @@ const RightBoxSlider = () => {
                                         </div>
                                     </div>
                                     <div className={styles.bookActionButtons}>
-                                        <Link to="/"
+                                        <a
+                                            onClick={() => addToCart(book)}
                                             title='Add to Cart'
                                             className={styles.bookActionBtn}>
                                             <AddShoppingCartIcon />
-                                        </Link>
-                                        <Link to="/"
-                                            title='Add to Wish List'
+                                        </a>
+                                        <a
+                                            onClick={() => addToCart(book)}
+                                            title='Add to Cart'
                                             className={styles.bookActionBtn}>
                                             <FavoriteBorderIcon />
-                                        </Link>
+                                        </a>
                                         <Link to={`/book/${book?._id}`}
                                             title='View Details'
                                             className={styles.bookActionBtn}>

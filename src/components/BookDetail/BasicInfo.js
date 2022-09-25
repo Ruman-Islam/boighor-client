@@ -1,4 +1,6 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import Rating from 'react-rating';
+import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 import StarRateIcon from '@mui/icons-material/StarRate';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
@@ -8,8 +10,23 @@ import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import likeIcon from '../../assets/images/like-svgrepo-com.svg'
 import heartIcon from '../../assets/images/heart-outline-svgrepo-com.svg';
 import styles from '../../styles/BookDetail/BookDetail.module.css';
+import { addToLocalStorage } from '../../Utils/shopping_cart';
 
 const BasicInfo = ({ rating, book }) => {
+
+    const addToCart = (book) => {
+        // const order = {
+        //     user_name: user?.displayName,
+        //     email: user?.email,
+        //     products: [
+        //         { product_id: book?._id, price: book?.sell_price, status: 'pending' }
+        //     ]
+        // }
+        // console.log(order);
+        addToLocalStorage(book?._id)
+        Swal.fire('Your book was added to cart')
+    }
+
     return (
         <div className={styles.basicInfoContainer}>
             <div className={styles.basicInfoInner}>
@@ -89,16 +106,16 @@ const BasicInfo = ({ rating, book }) => {
                     </div>}
                 <div className={styles.actionBtnContainer}>
                     <Link to="/" className={styles.detailLookBtn}>একটু পড়ে দেখুন</Link>
-                    <Link to="/" className={styles.addToCartBtn}>
+                    <a onClick={() => addToCart(book)} className={styles.addToCartBtn}>
                         <ShoppingCartIcon />
                         <span> Add to Cart</span>
-                    </Link>
+                    </a>
                 </div>
                 <div className={styles.actionBtnContainer2}>
                     <Link to="/" className={styles.detailLookBtn2}>একটু পড়ে দেখুন</Link>
-                    <Link to="/" className={styles.addToCartBtn2}>
+                    <a className={styles.addToCartBtn2}>
                         <span> Add to Cart</span>
-                    </Link>
+                    </a>
                 </div>
                 <div className={styles.wishListBox}>
                     <div>

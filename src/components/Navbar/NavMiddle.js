@@ -7,9 +7,10 @@ import NavMiddleRight from './NavMiddleRight';
 import { Link, useLocation } from 'react-router-dom';
 import styles from '../../styles/Navbar/NavMiddle.module.css';
 import { storeSearchedBooks, clearSearchedBooks } from '../../redux/book/storeBooksSlice';
+import fetcher from '../../api/axios';
 
 
-const NavMiddle = () => {
+const NavMiddle = ({ loginWithGoogle }) => {
     const dispatch = useDispatch();
     const { searchedBooks } = useSelector((state) => state.storeSearchedBooksReducer);
     const [searchQuery, setSearchQuery] = useState('');
@@ -23,9 +24,14 @@ const NavMiddle = () => {
         } else if (/^\s/.test(searchQuery)) {
             setSearchQuery('');
         } else {
-            fetch(`https://boighor-server.vercel.app/api/v1/book/search?char=${searchQuery}`)
-                .then(res => res.json())
-                .then(({ result }) => dispatch(storeSearchedBooks(result)))
+            (async () => {
+                try {
+                    const { data: { result } } = await fetcher.get(`book/search?char=${searchQuery}`);
+                    dispatch(storeSearchedBooks(result))
+                } catch (error) {
+                    console.log(error);
+                }
+            })()
         }
     }, [searchQuery]);
     // ........................
@@ -45,7 +51,8 @@ const NavMiddle = () => {
                         searchQuery={searchQuery}
                         searchedBooks={searchedBooks}
                     />
-                    <NavMiddleRight />
+                    <NavMiddleRight
+                        loginWithGoogle={loginWithGoogle} />
                 </div>
             </div>
 

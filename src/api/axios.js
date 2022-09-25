@@ -1,5 +1,5 @@
 import axios from 'axios';
-const baseURL = 'https://boighor-server.vercel.app/api/v1/'
+const baseURL = 'http://localhost:5000/api/v1/'
 
 const fetcher = axios.create({
     baseURL,
@@ -10,7 +10,8 @@ const fetcher = axios.create({
 
 fetcher.interceptors.request.use(
     (config) => {
-        const token = `Bearer ${JSON.parse(localStorage.getItem('accessToken'))}`;
+        // const token = `Bearer ${JSON.parse(localStorage.getItem('accessToken'))}`;
+        const token = JSON.parse(localStorage.getItem('accessToken'));
         if (token) {
             config.headers.authorization = token;
         }

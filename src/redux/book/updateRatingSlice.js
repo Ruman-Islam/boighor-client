@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from 'axios';
+import fetcher from "../../api/axios";
 
 export const fetchUpdateRating = createAsyncThunk("ratingUpdateSlice/fetchUpdateRating", async (query) => {
     const { id } = query;
     const { rating } = query;
-    const url = `https://boighor-server.vercel.app/api/v1/book/update_book_rating?id=${id}&rating=${rating}`
-    const { data } = await axios.patch(url)
+    const url = `book/update_book_rating?id=${id}&rating=${rating}`
+    const { data } = await fetcher.patch(url)
     return data.result;
 });
 

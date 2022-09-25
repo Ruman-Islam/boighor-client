@@ -5,7 +5,7 @@ import styles from '../styles/BookDetail/BookDetail.module.css';
 import BasicDetail from '../components/BookDetail/BasicDetail';
 import { fetchABook } from '../redux/book/bookDetailSlice';
 import AdditionalInfo from '../components/BookDetail/AdditionalInfo';
-import FloatingCart from '../components/BookDetail/FloatingCart';
+// import FloatingCart from '../components/BookDetail/FloatingCart';
 import { clearSearchedBooks } from '../redux/book/storeBooksSlice';
 
 const BookDetail = () => {
@@ -31,7 +31,7 @@ const BookDetail = () => {
                             book={book} />
                         <AdditionalInfo book={book} />
                     </div>
-                    <FloatingCart />
+                    {/* <FloatingCart /> */}
                 </div>
             </div>
         </section>

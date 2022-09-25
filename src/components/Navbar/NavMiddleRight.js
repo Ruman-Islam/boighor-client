@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styles from '../../styles/Navbar/NavMiddle.module.css';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import LoginDropdown from './LoginDropdown';
@@ -10,15 +10,13 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import { useRef } from 'react';
-import UseToken from '../../hooks/UseToken';
 
-const NavMiddleRight = () => {
+const NavMiddleRight = ({ loginWithGoogle }) => {
+    const [cartItems, setCartItems] = useState();
     const navigate = useNavigate();
-    const [user, loading, error] = useAuthState(auth);
+    const [user, ,] = useAuthState(auth);
     const [toggleUserDropdown, setToggleUserDropdown] = useState(false);
     const container = useRef(null);
-    const btnRef = useRef(null);
-    const { token } = UseToken(user);
 
     const logout = async () => {
         await signOut(auth);
@@ -26,10 +24,14 @@ const NavMiddleRight = () => {
         window.location.reload();
     };
 
-    // useEffect(() => {
-    //     if (token) navigate(from, { replace: true });
-    //     if (error) message.error(error?.message.split('/')[1].split(')')[0]);
-    // }, [user, error, navigate, from]);
+    useEffect(() => {
+        const savedItems = [];
+        const cartItems = localStorage.getItem('shopping-cart')
+        for (const item in JSON.parse(cartItems)) {
+            savedItems.push(item)
+        }
+        setCartItems(savedItems);
+    }, [])
 
     useEffect(() => {
         const hideMobileMenu = (e) => {
@@ -46,13 +48,14 @@ const NavMiddleRight = () => {
             {/* SHOPPING CART AND LOGIN/REGISTRATION */}
             <div>
                 <div className={styles.navCartContainer}>
-                    <ShoppingCartOutlinedIcon />
-                    <div>0</div>
+                    <span onClick={() => navigate('/cart')}>
+                        <ShoppingCartOutlinedIcon />
+                    </span>
                 </div>
                 {!user ?
                     <div className={styles.logBtnContainer}>
                         <a>Sign in</a>
-                        <LoginDropdown />
+                        <LoginDropdown loginWithGoogle={loginWithGoogle} />
                     </div>
                     :
                     <div
@@ -75,10 +78,9 @@ const NavMiddleRight = () => {
                                 className={styles.dropdownItem}>
                                 My Account
                             </button>
-                            <button className={styles.dropdownItem}>My Orders</button>
-                            <button className={styles.dropdownItem}>My List</button>
-                            <button className={styles.dropdownItem}>My Wishlist</button>
-                            <button className={styles.dropdownItem}>My Rating Reviews</button>
+                            <button
+                                onClick={() => navigate("/my-section/orders")}
+                                className={styles.dropdownItem}>My Orders</button>
                             <div className={styles.divider}></div>
                             <button onClick={logout} className={styles.dropdownItem}>Sign Out</button>
                         </div>

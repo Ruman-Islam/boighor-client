@@ -1,20 +1,31 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+// import { useForm } from "react-hook-form";
+// import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+// import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import React, { useEffect } from 'react';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import GoogleIcon from '@mui/icons-material/Google';
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { useForm } from "react-hook-form";
 import auth from '../firebase/firebaseConfig';
 import { useAuthState, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import styles from '../styles/Login/Login.module.css';
+import { useLocation, useNavigate } from 'react-router-dom';
+import UseToken from '../hooks/UseToken';
 
 const Login = () => {
-    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    // const { register, handleSubmit, formState: { errors } } = useForm();
+    // const onSubmit = data => console.log(data);
+    const [signInWithGoogle, , ,] = useSignInWithGoogle(auth);
     const [googleUser, ,] = useAuthState(auth);
-    console.log(googleUser);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+    const { token } = UseToken(googleUser);
+
+
+    useEffect(() => {
+        if (token) navigate(from, { replace: true });
+    }, [from, token, navigate]);
+
 
     return (
         <section className={styles.login}>
@@ -32,7 +43,7 @@ const Login = () => {
                             <span>Google</span>
                         </button>
                     </div>
-                    <p className={styles.loginDropdownHelpText}>OR</p>
+                    {/* <p className={styles.loginDropdownHelpText}>OR</p>
                     <p className={styles.loginDropdownHelpText}>Sign in with email</p>
                     <form onSubmit={handleSubmit(onSubmit)}
                         className={styles.loginForm}>
@@ -67,8 +78,8 @@ const Login = () => {
                     <a className={styles.forgot_pass_link}>Forgot Password?</a>
 
                     <div className={styles.formFooter}>
-                        <p><span>Don’t have an account?</span><span>Sign Up Now!</span></p>
-                    </div>
+                        <p><span>Don’t have an account?</span><span onClick={() => navigate('/register')}>Sign Up Now!</span></p>
+                    </div> */}
                 </div>
             </div>
         </section>

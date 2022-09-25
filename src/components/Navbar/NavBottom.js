@@ -5,16 +5,18 @@ import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 import Dropdown from './Dropdown';
 import { toggleCategory } from '../../redux/navbarSlice';
 import useNav from '../../hooks/UseNav';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from '../../styles/Navbar/NavBottom.module.css';
 
 const NavBottom = () => {
+    const navigate = useNavigate();
     const { navbar } = useNav();
     const isToggleOpen = useSelector((state) => state?.navbarReducer?.isCategoryToggleOpen);
     const dispatch = useDispatch();
     const btnRef = useRef();
     const [publishers, setPublishers] = useState([]);
     const [authors, setAuthors] = useState([]);
+    const [categories, setCategories] = useState([]);
 
     // TOGGLE CATEGORY
     useEffect(() => {
@@ -30,7 +32,7 @@ const NavBottom = () => {
 
     // FETCHING PUBLICATION LIST
     useEffect(() => {
-        fetch('https://boighor-server.vercel.app/api/v1/book/publications')
+        fetch('http://localhost:5000/api/v1/book/publications')
             .then(res => res.json())
             .then(({ result }) => {
                 setPublishers(result);
@@ -44,10 +46,23 @@ const NavBottom = () => {
 
     // FETCHING WRITER LIST
     useEffect(() => {
-        fetch('https://boighor-server.vercel.app/api/v1/book/writers')
+        fetch('http://localhost:5000/api/v1/book/writers')
             .then(res => res.json())
             .then(({ result }) => {
                 setAuthors(result);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }, []);
+    // ..............................
+
+    // FETCHING WRITER LIST
+    useEffect(() => {
+        fetch('http://localhost:5000/api/v1/book/category')
+            .then(res => res.json())
+            .then(({ result }) => {
+                setCategories(result);
             })
             .catch((err) => {
                 console.log(err);
@@ -73,30 +88,14 @@ const NavBottom = () => {
                         </button>
                         <ul id={`${isToggleOpen ? 'dropdown-show' : 'dropdown-hidden'}`}
                             className={styles.browseCategoryDropdown}>
-                            <li>
-                                <button>Arts &amp; Photography</button>
-                            </li>
-                            <li>
-                                <button>Biographies</button>
-                            </li>
-                            <li>
-                                <button>Business</button>
-                            </li>
-                            <li>
-                                <button>Classic</button>
-                            </li>
-                            <li>
-                                <button>Comics</button>
-                            </li>
-                            <li>
-                                <button>Children &apos;s Books</button>
-                            </li>
-                            <li>
-                                <button>Cookbooks</button>
-                            </li>
-                            <li>
-                                <button>Education</button>
-                            </li>
+                            {categories?.length > 0 &&
+                                categories.map((cg, index) => {
+                                    return (
+                                        <li key={index}>
+                                            <button onClick={() => navigate(`/category/${cg?._id}`)}>{cg?._id}</button>
+                                        </li>
+                                    )
+                                })}
                         </ul>
                     </div>
                     {/* <div className='support-center-contact-box'>
@@ -131,12 +130,6 @@ const NavBottom = () => {
                                 <ExpandMoreOutlinedIcon className={styles.navChevronDownIcon} />
                             </Link>
                             <Dropdown props={publishers} />
-                        </li>
-                        <li className={styles.navLink}>
-                            <Link to="/stock">Stock Books</Link>
-                        </li>
-                        <li className={styles.navLink}>
-                            <Link to="/contact">Contact</Link>
                         </li>
                     </ul>
                 </div>

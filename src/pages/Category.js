@@ -1,38 +1,30 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/grid";
-import "swiper/css/pagination";
-import { Grid, Pagination } from "swiper";
+import { Link, useParams } from 'react-router-dom';
+import fetcher from '../api/axios';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
-import SectionNav from './SectionNav';
-import styles from '../../../styles/Home/HomeProduct1/HomeProduct1.module.css';
-import { Link } from 'react-router-dom';
-import fetcher from '../../../api/axios';
-import { addToLocalStorage } from '../../../Utils/shopping_cart';
+import styles2 from '../styles/Category/Category.module.css';
+import styles from '../styles/Home/HomeProduct1/HomeProduct1.module.css';
+import { addToLocalStorage } from '../Utils/shopping_cart';
 import Swal from 'sweetalert2';
 
-const HomeProduct1 = () => {
-    const [active, setActive] = useState('featured');
-    const [url, setUrl] = useState('/featured');
-    const [loading, setLoading] = useState(false);
+const Category = () => {
+    const { query } = useParams();
     const [books, setBooks] = useState([]);
 
-
-    // FETCHING FEATURED/NEW/MOST-VIEWED BOOKS
     useEffect(() => {
-        setLoading(true);
         (async () => {
-            const { data: { result } } = await fetcher.get(`book${url}`)
-            setBooks(result);
-            setLoading(false);
+            try {
+                const { data: { result } } = await fetcher.get(`book/search?char=${query}`);
+                setBooks(result);
+            } catch (error) {
+
+            }
         })()
-    }, [url]);
-    // .......................................
+    }, [query])
 
     const addToCart = (book) => {
         // const order = {
@@ -48,41 +40,13 @@ const HomeProduct1 = () => {
     }
 
     return (
-        <div className={`${styles.homeProductSection1Wrapper} box-container`}>
-            <SectionNav active={active} setActive={setActive} setUrl={setUrl} />
-
-            {loading ? <div style={{ height: '400px' }}></div> :
-                <Swiper
-                    className={styles.sliderWrapper}
-                    slidesPerView={1}
-                    spaceBetween={60}
-                    grid={{
-                        rows: 2,
-                    }}
-                    pagination={{
-                        clickable: true,
-                    }}
-                    breakpoints={{
-                        820: {
-                            slidesPerView: 2
-                        },
-                        768: {
-                            slidesPerView: 2
-                        },
-                        1024: {
-                            slidesPerView: 4
-                        },
-                        1280: {
-                            slidesPerView: 5
-                        }
-                    }}
-                    modules={[Grid, Pagination]}
-                >
-                    {books?.slice(0, 20)?.map((book, index) => {
+        <section className={`${styles2.category} box-container`}>
+            <div className={styles2.books_container}>
+                {books?.length > 0 &&
+                    books?.map((book) => {
                         return (
-
-                            <SwiperSlide key={index} className={styles.slider}>
-                                <div key={index} className={styles.homeProductSection1Book}>
+                            <div key={book?._id} className={styles.slider}>
+                                <div className={styles.homeProductSection1Book}>
                                     <div>
                                         <Link to="/">
                                             {book?.publisher}
@@ -120,7 +84,7 @@ const HomeProduct1 = () => {
                                         </div>
                                     </div>
                                     <div className={styles.bookActionButtons}>
-                                        <a onClick={() => addToCart(book)}
+                                        <a onClick={() => addToCart(book?._id)}
                                             title='Add to Cart'
                                             className={styles.bookActionBtn}>
                                             <AddShoppingCartIcon />
@@ -141,12 +105,12 @@ const HomeProduct1 = () => {
                                         </Link>
                                     </div>
                                 </div>
-                            </SwiperSlide>
+                            </div>
                         )
                     })}
-                </Swiper>}
-        </div>
+            </div>
+        </section>
     );
 };
 
-export default HomeProduct1;
+export default Category;

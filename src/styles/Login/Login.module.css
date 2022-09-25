@@ -72,6 +72,7 @@
   width: 100%;
   padding: 0.2rem 0;
   border-bottom: 2px solid #eaeced;
+  position: relative;
 }
 .input_group_prepend {
   display: flex;
@@ -137,6 +138,20 @@
   color: #0397d3;
   font-weight: 600;
   font-size: 1.2rem;
+  cursor: pointer;
+}
+.form_error {
+  color: red;
+  font-size: 0.8rem;
+}
+.eye_icon {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+}
+.eye_icon svg {
+  color: gray;
+  width: 20px;
 }
 /* ..................................... */
 /* ...................................... */

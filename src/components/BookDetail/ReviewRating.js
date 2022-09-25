@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUpdateRating } from '../../redux/book/updateRatingSlice';
 import StarRateOutlinedIcon from '@mui/icons-material/StarRateOutlined';
@@ -7,6 +6,7 @@ import StarRateIcon from '@mui/icons-material/StarRate';
 import Rating from 'react-rating';
 import RatingStars from './RatingStars';
 import styles from '../../styles/BookDetail/BookDetail.module.css';
+import fetcher from '../../api/axios';
 
 const ReviewRating = () => {
     const dispatch = useDispatch();
@@ -32,8 +32,8 @@ const ReviewRating = () => {
             imgURL: 'https://i.ibb.co/bQtrt7M/profile-Image.png',
         }
         try {
-            const url = 'http://localhost:5000/api/v1/book/add_review_to_review'
-            const result = await axios.put(url, review);
+            const url = 'book/add_review_to_review'
+            const result = await fetcher.put(url, review);
             if (result.status === 200) {
                 setIsCollapse(false);
             }

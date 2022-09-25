@@ -7,19 +7,20 @@ import { fetchAUser } from '../../redux/user/userSlice';
 import styles from '../../styles/MySection/Profile.module.css';
 
 const Profile = () => {
+    // const [passwordDisabled, setPasswordDisabled] = useState(true);
     const [nameDisabled, setNameDisabled] = useState(true);
     const [emailDisabled, setEmailDisabled] = useState(true);
     const [photoDisabled, setPhotoDisabled] = useState(true);
-    const [passwordDisabled, setPasswordDisabled] = useState(true);
     const [googleUser, ,] = useAuthState(auth);
     const dispatch = useDispatch();
-    const { user, isLoading } = useSelector((state) => state.userReducer);
+    const { user } = useSelector((state) => state.userReducer);
 
     useEffect(() => {
         if (user) {
             dispatch(fetchAUser(googleUser?.email))
         }
-    }, [googleUser?.email, dispatch]);
+    }, [googleUser?.email]);
+
 
     return (
         <section className={styles.profile}>
@@ -60,17 +61,17 @@ const Profile = () => {
             </form>
 
             <div className={styles.heading}>
-                <span className={styles.span1}>Email Address</span>
+                <span className={styles.span1}>Phone Number</span>
                 {!!emailDisabled &&
                     <span className={styles.span2}
                         onClick={() => setEmailDisabled(!emailDisabled)}>
-                        Change Email Address
+                        Change Phone Number
                     </span>}
             </div>
             <form className={styles.second_form}>
                 <div className={styles.form_row}>
                     <div className={styles.form_col}>
-                        <input type="email" name="email" id="" defaultValue={user?.email} disabled={emailDisabled} />
+                        <input type="email" name="phone" id="" defaultValue={user?.phone} disabled={emailDisabled} />
                     </div>
                 </div>
                 {!emailDisabled && <input className={styles.name_submit} type="submit" value="Save" />}
@@ -92,15 +93,15 @@ const Profile = () => {
                 {!photoDisabled && <input className={styles.name_submit} type="submit" value="Submit" />}
             </form>
 
-            <div className={styles.heading}>
+            {/* <div className={styles.heading}>
                 <span className={styles.span1}>Password</span>
                 {!!passwordDisabled &&
                     <span className={styles.span2}
                         onClick={() => setPasswordDisabled(!passwordDisabled)}>
                         Add Password
                     </span>}
-            </div>
-            <form className={styles.second_form}>
+            </div> */}
+            {/* <form className={styles.second_form}>
                 {!passwordDisabled &&
                     <div className={styles.password_box}>
                         <div>
@@ -113,7 +114,7 @@ const Profile = () => {
                         </div>
                     </div>}
                 {!passwordDisabled && <input className={styles.name_submit} type="submit" value="Submit" />}
-            </form>
+            </form> */}
         </section>
     );
 };

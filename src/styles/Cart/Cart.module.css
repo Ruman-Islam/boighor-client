@@ -1,0 +1,186 @@
+.cart {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+  gap: 0 20px;
+}
+.items_container {
+  flex: 0 0 66.666667%;
+}
+.calculation {
+  height: fit-content;
+  flex: 0 0 33.333333%;
+  background-color: #fff;
+  box-shadow: 0px 4px 6px -3px #9c9c9c;
+}
+.cart_header {
+  background: #ffffff;
+  box-shadow: 0px 4px 6px -3px #9c9c9c;
+  border-radius: 3px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cart_header div:last-child h2 {
+  font-size: 1.2rem;
+  font-family: "roboto", sans-serif;
+  color: #333333;
+  font-weight: 500;
+}
+.cart_header div:last-child h2 span {
+  color: #33c24d;
+}
+.cart_item_container {
+  margin-top: 10px;
+  background: #ffffff;
+  color: #333333;
+  border: 1px solid #e2e2e2;
+  border-bottom: 0;
+  position: relative;
+  padding: 0;
+}
+.cart_item {
+  background: rgba(255, 152, 31, 0.05);
+  padding: 20px 10px 20px 30px;
+  border-bottom: 1px solid #e2e2e2;
+}
+.cart_item_inner {
+  display: flex;
+  justify-content: space-between;
+}
+.cart_item_thumb {
+  flex: 1 0 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart_item_thumb img {
+  object-fit: cover;
+}
+.cart_item_title {
+  flex: 1 0 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 20px;
+}
+.cart_item_title p:first-child {
+  font-size: 1.3rem;
+}
+.cart_item_title p:last-child {
+  color: #9c9c9c;
+}
+.cart_item_quantity {
+  flex: 1 0 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart_item_quantity input {
+  outline: 0;
+  width: 50px;
+  text-align: center;
+}
+.cart_item_price {
+  font-size: 1.2rem;
+  font-weight: 600;
+  flex: 1 0 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.checkout_footer {
+  background-color: transparent;
+  padding: 20px 30px 20px 0;
+  border-radius: 0 0 3px 3px;
+  border-top: 1px solid #b3b3b3;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+}
+.place_order_btn {
+  height: fit-content;
+  width: fit-content;
+  padding: 5px 30px;
+  margin-left: 10px;
+  font-size: 135%;
+  color: #ffffff !important;
+  border: 0;
+  border-radius: 3px;
+  background-color: #ff9900;
+  box-shadow: 0px 3px 6px -4px #a2a2a2;
+  background-position: center;
+  display: inline-block;
+  cursor: pointer;
+}
+.clear_order_btn {
+  height: fit-content;
+  width: fit-content;
+  padding: 5px 30px;
+  color: #87298f !important;
+  border-color: #87298f;
+  font-size: 110%;
+  border-radius: 2px 2px 2px 2px !important;
+  box-shadow: 0px 3px 6px -4px #a2a2a2;
+  border: 2px solid;
+  border-radius: 5px;
+  margin: 0 10px;
+  box-shadow: 0px 3px 6px -4px #a2a2a2;
+  font-weight: 700;
+  background: transparent;
+  cursor: pointer;
+}
+.clear_order_btn:hover {
+  background-color: #87298f;
+  border-color: #87298f;
+  color: #fff !important;
+  transition: all 0.6s;
+}
+.calculation_fixed {
+  padding: 20px;
+  position: static;
+}
+.calculation_header {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+.calculation_breakdown_content {
+  padding: 1rem;
+}
+.calculation_breakdown_content div {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+  padding: 1rem;
+}
+.cart_item_title svg {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+/* ........Desktop & Laptop Responsive........... */
+/* .............................................. */
+@media only screen and (min-width: 821px) {
+  .cart {
+    flex-direction: row;
+  }
+  .calculation {
+    padding: 20px;
+    position: sticky;
+    /* top: 300px; */
+  }
+}
+/* ..................................... */
+/* ...................................... */
+
+/* ........Tablet & Pad Responsive........... */
+/* ......................................... */
+@media only screen and (min-width: 768px) and (max-width: 820px) {
+}
+/* ..................................... */
+/* ...................................... */

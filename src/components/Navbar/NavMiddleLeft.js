@@ -53,14 +53,13 @@ const NavMiddleLeft = ({ searchQuery, setSearchQuery }) => {
                 {
                     searchedBooks ?
                         <ul
-
+                            ref={searchBoxRef}
                             className={`${styles.searchedItemsBox}`}>
                             {searchedBooks?.map((book) => {
                                 return (
                                     <Link
-                                        ref={searchBoxRef}
                                         key={book?._id}
-                                        to={`/BookDetail/${book?._id}`} >
+                                        to={`/book/${book?._id}`} >
                                         <li className={styles.searchedItem}>
                                             <div>
                                                 <img

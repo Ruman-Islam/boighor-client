@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from 'axios';
+import fetcher from "../../api/axios";
 
 export const fetchABook = createAsyncThunk("bookDetailSlice/fetchABook", async (id) => {
-    const { data } = await axios.get(`https://boighor-server.vercel.app/api/v1/book/get-one/${id}`)
+    const { data } = await fetcher.get(`book/get-one/${id}`)
     return data.result;
 });
 

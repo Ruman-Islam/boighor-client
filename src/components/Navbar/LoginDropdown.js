@@ -2,34 +2,30 @@
 import React from 'react';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import GoogleIcon from '@mui/icons-material/Google';
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import styles from '../../styles/Navbar/NavMiddle.module.css';
-import { useForm } from "react-hook-form";
-import auth from '../../firebase/firebaseConfig';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+// import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+// import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+// import { useForm } from "react-hook-form";
+// import { Link } from 'react-router-dom';
 
-const LoginDropdown = () => {
-    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+const LoginDropdown = ({ loginWithGoogle }) => {
+    // const { register, handleSubmit, formState: { errors } } = useForm();
+    // const onSubmit = data => console.log(data);
 
     return (
         <div className={styles.loginDropdown}>
-            <a className={styles.create_account_link}>Create account</a>
-
-            <p className={styles.loginDropdownHelpText}>Or sign up with just one click</p>
+            <p className={styles.loginDropdownHelpText}>Sign up with just one click</p>
             <div className={styles.login_dropdown_btn_group}>
                 <button>
                     <FacebookOutlinedIcon />
                     <span>Facebook</span>
                 </button>
-                <button onClick={async () => await signInWithGoogle()}>
+                <button onClick={async () => await loginWithGoogle()}>
                     <GoogleIcon />
                     <span>Google</span>
                 </button>
             </div>
-            <p className={styles.loginDropdownTitle}>Sign in with email</p>
+            {/* <p className={styles.loginDropdownTitle}>Sign in with email</p>
             <form onSubmit={handleSubmit(onSubmit)}
                 className={styles.loginForm}>
 
@@ -59,8 +55,8 @@ const LoginDropdown = () => {
 
 
                 <input className={styles.login_btn} type="submit" value={'Sign in'} />
-            </form>
-            <a className={styles.forgot_pass_link}>Forgot Password?</a>
+            </form> */}
+            {/* <a className={styles.forgot_pass_link}>Forgot Password?</a> */}
         </div>
     );
 };

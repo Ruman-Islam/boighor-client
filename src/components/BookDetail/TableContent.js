@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import styles from '../../styles/BookDetail/BookDetail.module.css';
 import { Link } from 'react-router-dom';
-
+import fetcher from '../../api/axios';
 
 const TableContent = ({ activeTab, setActiveTab, book }) => {
     const [author, setAuthor] = useState({});
@@ -10,7 +9,7 @@ const TableContent = ({ activeTab, setActiveTab, book }) => {
     useEffect(() => {
         if (book?.author) {
             (async () => {
-                const { data: { result } } = await axios.get(`http://localhost:5000/api/v1/author?query=${book?.author}`)
+                const { data: { result } } = await fetcher.get(`author?query=${book?.author}`)
                 setAuthor(result);
             })()
         }

@@ -25,8 +25,8 @@ const Dropdown = ({ props }) => {
                     {props?.length > 0 && props?.slice(0, 32)?.map((item, index) => {
                         return (
                             <li key={index}>
-                                <Link to="/">
-                                    {item?._id}
+                                <Link to={`/category/${item?._id}`}>
+                                    {item?._id.slice(0, 27)}
                                 </Link>
                             </li>
                         )

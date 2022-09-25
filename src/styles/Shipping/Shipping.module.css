@@ -1,0 +1,180 @@
+.shipping {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+.shipping form {
+  flex: 1 !important;
+}
+.shipping_content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
+.shipping_header {
+  height: 56px;
+  background-color: #fafafa;
+  padding: 0 20px;
+  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+.shipping_header h3 {
+  font-size: 1rem;
+}
+.shipping_header span {
+  font-size: 0.8rem;
+}
+.shipping_body {
+  flex: 1 1 auto;
+  padding: 1rem;
+  font-size: 0.8rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+fieldset {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+label {
+  width: fit-content;
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  color: #5856d6;
+  font-weight: 700;
+  font-size: 100%;
+  background: #ffffff;
+  padding: 0 5px;
+  -webkit-transform: translate3d(0, -25px, 0);
+  transform: translate3d(0, -20px, 0);
+}
+fieldset input {
+  border-color: #33c24d;
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 115%;
+  line-height: 1.5;
+  color: #333333;
+  background-color: #fff;
+  border: 1px solid #b3b3b3;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease-in-out;
+  padding-right: 25px;
+  outline: 0;
+}
+.phone_box {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  /* gap: 0 10px; */
+}
+.phone_box fieldset {
+  width: 49%;
+}
+.address_box {
+  margin-top: 20px;
+}
+.address_box fieldset textarea {
+  outline: 0;
+  min-height: 110px;
+  resize: none;
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 115%;
+  line-height: 1.5;
+  color: #333333;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #b3b3b3;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease-in-out;
+  padding-right: 25px;
+}
+.content_wrapper_payment {
+  margin-top: 30px;
+}
+.cash_on_delivery {
+  background-color: #fafafa;
+  width: 48%;
+  height: 80px;
+  padding: 20px;
+}
+/* input[type="radio" i] {
+  background-color: initial;
+  cursor: default;
+  appearance: auto;
+  box-sizing: border-box;
+  margin: 3px 3px 0px 5px;
+  padding: initial;
+  border: initial;
+} */
+.form_check_input {
+  position: absolute;
+  /* left: 9999px; */
+}
+.cash_on_delivery label {
+  font-size: 1.5rem;
+  top: 16px;
+  background-color: transparent;
+  position: relative;
+  padding-left: 20px;
+  line-height: 25px;
+  display: inline-block;
+  color: #77787b;
+  cursor: pointer;
+}
+.confirm_btn {
+  display: flex;
+  justify-content: end;
+}
+.confirm_btn div input {
+  border: 0;
+  margin: 25px 30px 25px 0;
+  width: 215px;
+  height: 50px;
+  line-height: 2;
+  border-radius: 4px;
+  background-color: #ff9900;
+  color: #ffffff;
+  font-size: 128%;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+/* ........Desktop & Laptop Responsive........... */
+/* .............................................. */
+@media only screen and (min-width: 821px) {
+  .shipping {
+    flex-direction: row;
+  }
+  /* ............................ */
+}
+/* ..................................... */
+/* ...................................... */
+
+/* ........Tablet & Pad Responsive........... */
+/* ......................................... */
+@media only screen and (min-width: 768px) and (max-width: 820px) {
+  .shipping {
+    flex-direction: row;
+  }
+  /* ............................ */
+}
+/* ..................................... */
+/* ...................................... */

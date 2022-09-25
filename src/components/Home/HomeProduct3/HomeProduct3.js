@@ -9,6 +9,7 @@ import { Grid, Pagination } from "swiper";
 // ................... //
 import styles from '../../../styles/Home/HomeProduct3/HomeProduct3.module.css';
 import { Link } from 'react-router-dom';
+import fetcher from '../../../api/axios';
 
 
 const HomeProduct3 = () => {
@@ -16,14 +17,14 @@ const HomeProduct3 = () => {
 
     // FETCHING CHILDREN BOOKS
     useEffect(() => {
-        fetch('https://boighor-server.vercel.app/api/v1/book/children')
-            .then(res => res.json())
-            .then(({ result }) => {
+        (async () => {
+            try {
+                const { data: { result } } = await fetcher.get("book/children")
                 setChildrenBooks(result);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
+            } catch (error) {
+                console.log(error);
+            }
+        })()
     }, [])
 
     return (
@@ -75,7 +76,7 @@ const HomeProduct3 = () => {
                                         </div>
                                     </Link>
                                     <div className={styles.specialBookDetails}>
-                                        <Link to="/">
+                                        <Link to={`/category/${book?.publisher}`}>
                                             {book?.publisher}
                                         </Link>
                                         <Link to={`/book/${book?._id}`}>

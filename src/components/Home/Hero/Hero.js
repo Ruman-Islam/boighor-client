@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../../../styles/Home/Hero/Hero.module.css';
 import '../../../styles/Home/Hero/Hero.css';
+import fetcher from '../../../api/axios'
 
 const sliderDiv = [
     `
@@ -45,18 +46,13 @@ const Hero = () => {
     const sliderDivRef = useRef('');
     const indicatorDivRef = useRef();
     const length = sliderDiv.length;
-    console.log(featuredBooks);
 
     // FETCHING FEATURED BOOKS
     useEffect(() => {
-        fetch('https://boighor-server.vercel.app/api/v1/book/featured')
-            .then(res => res.json())
-            .then(({ result }) => {
-                setFeaturedBooks(result);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
+        (async () => {
+            const { data: { result } } = await fetcher.get("book/featured")
+            setFeaturedBooks(result)
+        })()
     }, [])
 
     // CAROUSEL ANIMATION MECHANISM
@@ -115,7 +111,7 @@ const Hero = () => {
                                             </div>
                                         </Link>
                                         <div className={styles.most_searched_book_detail}>
-                                            <Link to={`/book/${book?._id}`}>
+                                            <Link to={`/category/${book?.publisher}`}>
                                                 <span>{book?.publisher}</span>
                                             </Link>
                                             <Link to={`/book/${book?._id}`}>

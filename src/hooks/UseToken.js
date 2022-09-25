@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import fetcher from '../api/axios';
 
 const UseToken = user => {
+
     const [token, setToken] = useState("");
     const useData = useMemo(() => {
         return {
@@ -20,7 +21,6 @@ const UseToken = user => {
                 try {
                     const { data } = await fetcher.put("user/social_login", useData);
                     const accessToken = data.accessToken;
-                    console.log(accessToken);
                     localStorage.setItem('accessToken', JSON.stringify(accessToken));
                     setToken(accessToken);
                 } catch (error) {
@@ -28,7 +28,8 @@ const UseToken = user => {
                 }
             })()
         }
-    }, [user?.email, useData])
+    }, [user?.email, useData, token])
+
 
     return { token };
 };

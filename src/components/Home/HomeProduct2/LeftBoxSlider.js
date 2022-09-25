@@ -5,6 +5,7 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import styles from '../../../styles/Home/HomeProduct2/HomeProduct2.module.css';
 import { Link } from 'react-router-dom';
+import fetcher from '../../../api/axios';
 
 const LeftBoxSlider = () => {
     const [FeaturedBooks, setFeaturedBooks] = useState([]);
@@ -12,27 +13,28 @@ const LeftBoxSlider = () => {
 
     // FETCHING NEW ARRIVAL BOOKS
     useEffect(() => {
-        fetch(`https://boighor-server.vercel.app/api/v1/book/new`)
-            .then(res => res.json())
-            .then(({ result }) => {
+        (async () => {
+            try {
+                const { data: { result } } = await fetcher.get("book/new")
                 setNewArrivalBooks(result);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
+            } catch (error) {
+                console.log(error);
+            }
+        })()
     }, []);
 
     // FETCHING FEATURED BOOKS
     useEffect(() => {
-        fetch(`https://boighor-server.vercel.app/api/v1/book/featured`)
-            .then(res => res.json())
-            .then(({ result }) => {
+        (async () => {
+            try {
+                const { data: { result } } = await fetcher.get("book/featured")
                 setFeaturedBooks(result);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
+            } catch (error) {
+                console.log(error);
+            }
+        })()
     }, []);
+
 
     return (
         <div className={styles.productRightBox}>
@@ -78,7 +80,7 @@ const LeftBoxSlider = () => {
                                         </Link>
                                     </div>
                                     <div className={styles.specialBookDetails}>
-                                        <Link to="/">{book?.publisher}</Link>
+                                        <Link to={`/category/${book?.publisher}`}>{book?.publisher}</Link>
                                         <Link to={`/book/${book?._id}`}>
                                             {book?.title?.slice(0, 31)}
                                         </Link>
@@ -144,7 +146,7 @@ const LeftBoxSlider = () => {
                                         </Link>
                                     </div>
                                     <div className={styles.specialBookDetails}>
-                                        <Link to="/">
+                                        <Link to={`/category/${book?.publisher}`}>
                                             {book?.publisher}
                                         </Link>
                                         <Link to={`/book/${book?._id}`}>

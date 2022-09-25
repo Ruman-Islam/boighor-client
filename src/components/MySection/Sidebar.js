@@ -1,11 +1,13 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import auth from '../../firebase/firebaseConfig';
 import styles from '../../styles/MySection/Sidebar.module.css';
 
 const Sidebar = () => {
     const [user, ,] = useAuthState(auth);
+    const { pathname } = useLocation();
+
     return (
         <aside className={styles.sidebar_box}>
             <div className={styles.profile_view}>
@@ -19,22 +21,18 @@ const Sidebar = () => {
             </div>
             <ul className={styles.sidebar_menu}>
                 <li>
-                    <Link className={styles.active} to="my-account">My Account</Link>
+                    <Link
+                        className={pathname.includes('profile') ? styles.active : undefined}
+                        to="profile">
+                        My Account
+                    </Link>
                 </li>
                 <li>
-                    <Link to="my-orders">My Orders</Link>
-                </li>
-                <li>
-                    <Link to="my-list">My List</Link>
-                </li>
-                <li>
-                    <Link to="my-wishlist">My Wishlist</Link>
-                </li>
-                <li>
-                    <Link to="my-ratings">My Rating &amp; Reviews</Link>
-                </li>
-                <li>
-                    <Link to="my-points">My Points</Link>
+                    <Link
+                        className={pathname.includes('orders') ? styles.active : undefined}
+                        to="orders">
+                        My Orders
+                    </Link>
                 </li>
             </ul>
         </aside>
