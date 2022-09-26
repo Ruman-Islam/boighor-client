@@ -34,6 +34,13 @@ const Sidebar = () => {
                         My Orders
                     </Link>
                 </li>
+                <li>
+                    <Link
+                        className={pathname.includes('report') ? styles.active : undefined}
+                        to="report">
+                        Report
+                    </Link>
+                </li>
             </ul>
         </aside>
     );

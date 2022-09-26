@@ -3,7 +3,6 @@ import { useEffect, useMemo, useState } from 'react';
 import fetcher from '../api/axios';
 
 const UseToken = user => {
-    console.log(user)
 
     const [token, setToken] = useState("");
     const useData = useMemo(() => {

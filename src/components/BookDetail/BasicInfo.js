@@ -104,20 +104,31 @@ const BasicInfo = ({ rating, book }) => {
                             })}
                         </select>
                     </div>}
-                <div className={styles.actionBtnContainer}>
-                    <Link to="/" className={styles.detailLookBtn}>একটু পড়ে দেখুন</Link>
-                    <a onClick={() => addToCart(book)} className={styles.addToCartBtn}>
-                        <ShoppingCartIcon />
-                        <span> Add to Cart</span>
-                    </a>
-                </div>
-                <div className={styles.actionBtnContainer2}>
-                    <Link to="/" className={styles.detailLookBtn2}>একটু পড়ে দেখুন</Link>
-                    <a className={styles.addToCartBtn2}>
-                        <span> Add to Cart</span>
-                    </a>
-                </div>
-                <div className={styles.wishListBox}>
+                {!!book?.quantity ?
+                    <>
+                        <div className={styles.actionBtnContainer}>
+                            {/* <Link to="/" className={styles.detailLookBtn}>একটু পড়ে দেখুন</Link> */}
+                            <a onClick={() => addToCart(book)} className={styles.addToCartBtn}>
+                                <ShoppingCartIcon />
+                                <span> Add to Cart</span>
+                            </a>
+                        </div>
+                        <div className={styles.actionBtnContainer2}>
+                            {/* <Link to="/" className={styles.detailLookBtn2}>একটু পড়ে দেখুন</Link> */}
+                            <a onClick={() => addToCart(book)} className={styles.addToCartBtn2}>
+                                <span> Add to Cart</span>
+                            </a>
+                        </div>
+                    </> :
+                    <>
+                        <div className={styles.actionBtnContainer}>
+                            {/* <Link to="/" className={styles.detailLookBtn}>একটু পড়ে দেখুন</Link> */}
+                            <a className={styles.addToCartBtn} style={{ backgroundColor: '#0397D3', cursor: 'default' }}>
+                                <span>নিচে স্ক্রল করে রিকুয়েস্ট করুন</span>
+                            </a>
+                        </div>
+                    </>}
+                {/* <div className={styles.wishListBox}>
                     <div>
                         <Link to="/" className={styles.addToWishBtn}>
                             <img width={15} height={15} src={heartIcon} alt="" />
@@ -130,7 +141,7 @@ const BasicInfo = ({ rating, book }) => {
                             <span> Recommend This Book</span>
                         </Link>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );

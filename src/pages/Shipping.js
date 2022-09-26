@@ -40,6 +40,7 @@ const Shipping = () => {
 
 
     const onSubmit = async data => {
+
         // Calculation
         let totalPrice = 0;
         for (const product of cart) {
@@ -107,6 +108,7 @@ const Shipping = () => {
                                                 }
                                             })} />
                                         <label>Phone No</label>
+                                        {errors.phone && errors.phone?.message}
                                     </fieldset>
                                     <fieldset>
                                         <input
@@ -116,9 +118,16 @@ const Shipping = () => {
                                 </div>
                                 <div className={styles.address_box}>
                                     <fieldset>
-                                        <textarea  {...register("address")}
+                                        <textarea
+                                            {...register("address", {
+                                                required: {
+                                                    value: true,
+                                                    message: 'Address no is Required'
+                                                }
+                                            })}
                                             cols="10" rows="0">
                                         </textarea>
+                                        {errors.address && errors.address?.message}
                                         <label>Address</label>
                                     </fieldset>
                                 </div>
@@ -136,23 +145,37 @@ const Shipping = () => {
                             <div className={styles.shipping_form}>
                                 <div className={styles.cash_on_delivery}>
                                     <input className={styles.form_check_input}
-                                        {...register("payment")}
+                                        {...register("payment",
+                                            {
+                                                required: {
+                                                    value: true,
+                                                    message: 'Payment method  is Required'
+                                                }
+                                            })}
                                         type="radio"
                                         value="cod"
                                         id="cod" />
                                     <label htmlFor="cod">
                                         <span>Cash on Delivery</span>
                                     </label>
+                                    {errors.payment && errors.payment?.message}
                                 </div>
                                 <div className={styles.cash_on_delivery}>
                                     <input className={styles.form_check_input}
-                                        {...register("payment")}
+                                        {...register("payment",
+                                            {
+                                                required: {
+                                                    value: true,
+                                                    message: 'Payment method  is Required'
+                                                }
+                                            })}
                                         type="radio"
                                         value="bkash"
                                         id="bkash" />
                                     <label htmlFor="bkash">
                                         <span>Bkash</span>
                                     </label>
+                                    {errors.payment && errors.payment?.message}
                                 </div>
                             </div>
                         </div>

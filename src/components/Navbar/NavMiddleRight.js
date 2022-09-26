@@ -80,7 +80,14 @@ const NavMiddleRight = ({ loginWithGoogle }) => {
                             </button>
                             <button
                                 onClick={() => navigate("/my-section/orders")}
-                                className={styles.dropdownItem}>My Orders</button>
+                                className={styles.dropdownItem}>
+                                My Orders
+                            </button>
+                            <button
+                                onClick={() => navigate("/my-section/report")}
+                                className={styles.dropdownItem}>
+                                Report
+                            </button>
                             <div className={styles.divider}></div>
                             <button onClick={logout} className={styles.dropdownItem}>Sign Out</button>
                         </div>
