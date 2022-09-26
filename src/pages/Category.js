@@ -41,6 +41,7 @@ const Category = () => {
 
     return (
         <section className={`${styles2.category} box-container`}>
+            <h3>Search result: <span>{query}</span></h3> <br />
             <div className={styles2.books_container}>
                 {books?.length > 0 &&
                     books?.map((book) => {

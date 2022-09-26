@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ExpandLessOutlinedIcon from '@mui/icons-material/ExpandLessOutlined';
@@ -7,6 +8,7 @@ import { toggleCategory } from '../../redux/navbarSlice';
 import useNav from '../../hooks/UseNav';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from '../../styles/Navbar/NavBottom.module.css';
+import fetcher from '../../api/axios';
 
 const NavBottom = () => {
     const navigate = useNavigate();
@@ -32,41 +34,41 @@ const NavBottom = () => {
 
     // FETCHING PUBLICATION LIST
     useEffect(() => {
-        fetch('http://localhost:5000/api/v1/book/publications')
-            .then(res => res.json())
-            .then(({ result }) => {
+        (async () => {
+            try {
+                const { data: { result } } = await fetcher.get("book/publications")
                 setPublishers(result);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
+            } catch (error) {
+                console.log(error);
+            }
+        })()
     }, []);
     // ..............................
 
 
     // FETCHING WRITER LIST
     useEffect(() => {
-        fetch('http://localhost:5000/api/v1/book/writers')
-            .then(res => res.json())
-            .then(({ result }) => {
+        (async () => {
+            try {
+                const { data: { result } } = await fetcher.get("book/writers")
                 setAuthors(result);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
+            } catch (error) {
+                console.log(error);
+            }
+        })()
     }, []);
     // ..............................
 
     // FETCHING WRITER LIST
     useEffect(() => {
-        fetch('http://localhost:5000/api/v1/book/category')
-            .then(res => res.json())
-            .then(({ result }) => {
+        (async () => {
+            try {
+                const { data: { result } } = await fetcher.get("book/categories")
                 setCategories(result);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
+            } catch (error) {
+                console.log(error);
+            }
+        })()
     }, []);
     // ..............................
 
@@ -89,7 +91,7 @@ const NavBottom = () => {
                         <ul id={`${isToggleOpen ? 'dropdown-show' : 'dropdown-hidden'}`}
                             className={styles.browseCategoryDropdown}>
                             {categories?.length > 0 &&
-                                categories.map((cg, index) => {
+                                categories?.map((cg, index) => {
                                     return (
                                         <li key={index}>
                                             <button onClick={() => navigate(`/category/${cg?._id}`)}>{cg?._id}</button>
@@ -116,19 +118,19 @@ const NavBottom = () => {
                             </Link>
                         </li>
                         <li className={`${styles.writer} ${styles.navLink}`}>
-                            <Link to="/writer">
+                            <a>
                                 Writer
                                 <ExpandLessOutlinedIcon className={styles.navChevronUpIcon} />
                                 <ExpandMoreOutlinedIcon className={styles.navChevronDownIcon} />
-                            </Link>
+                            </a>
                             <Dropdown props={authors} />
                         </li>
                         <li className={`${styles.publication} ${styles.navLink}`}>
-                            <Link to="/publication">
+                            <a style={{ cursor: 'pointer' }}>
                                 Publications
                                 <ExpandLessOutlinedIcon className={styles.navChevronUpIcon} />
                                 <ExpandMoreOutlinedIcon className={styles.navChevronDownIcon} />
-                            </Link>
+                            </a>
                             <Dropdown props={publishers} />
                         </li>
                     </ul>

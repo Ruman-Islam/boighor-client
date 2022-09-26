@@ -12,7 +12,7 @@ import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import { useRef } from 'react';
 
 const NavMiddleRight = ({ loginWithGoogle }) => {
-    const [cartItems, setCartItems] = useState();
+    // const [cartItems, setCartItems] = useState();
     const navigate = useNavigate();
     const [user, ,] = useAuthState(auth);
     const [toggleUserDropdown, setToggleUserDropdown] = useState(false);
@@ -24,14 +24,14 @@ const NavMiddleRight = ({ loginWithGoogle }) => {
         window.location.reload();
     };
 
-    useEffect(() => {
-        const savedItems = [];
-        const cartItems = localStorage.getItem('shopping-cart')
-        for (const item in JSON.parse(cartItems)) {
-            savedItems.push(item)
-        }
-        setCartItems(savedItems);
-    }, [])
+    // useEffect(() => {
+    //     const savedItems = [];
+    //     const cartItems = localStorage.getItem('shopping-cart')
+    //     for (const item in JSON.parse(cartItems)) {
+    //         savedItems.push(item)
+    //     }
+    //     setCartItems(savedItems);
+    // }, [])
 
     useEffect(() => {
         const hideMobileMenu = (e) => {
