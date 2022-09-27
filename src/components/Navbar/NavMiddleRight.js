@@ -10,13 +10,24 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import { useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAUser } from '../../redux/user/userSlice';
 
 const NavMiddleRight = ({ loginWithGoogle }) => {
     // const [cartItems, setCartItems] = useState();
     const navigate = useNavigate();
-    const [user, ,] = useAuthState(auth);
+    const dispatch = useDispatch();
+    const [googleUser, ,] = useAuthState(auth);
     const [toggleUserDropdown, setToggleUserDropdown] = useState(false);
+    const { user } = useSelector((state) => state.userReducer)
     const container = useRef(null);
+
+    useEffect(() => {
+        if (googleUser?.email) {
+            dispatch(fetchAUser(googleUser?.email))
+
+        }
+    }, [googleUser])
 
     const logout = async () => {
         await signOut(auth);
@@ -52,7 +63,7 @@ const NavMiddleRight = ({ loginWithGoogle }) => {
                         <ShoppingCartOutlinedIcon />
                     </span>
                 </div>
-                {!user ?
+                {!googleUser || !user ?
                     <div className={styles.logBtnContainer}>
                         <a>Sign in</a>
                         <LoginDropdown loginWithGoogle={loginWithGoogle} />
@@ -64,8 +75,8 @@ const NavMiddleRight = ({ loginWithGoogle }) => {
                         <button
                             onClick={() => setToggleUserDropdown(!toggleUserDropdown)}
                             className={styles.logged_in_user_menu_button}>
-                            <img src={user?.photoURL} alt='' />
-                            <span>{user?.displayName}</span>
+                            <img src={googleUser?.photoURL || user?.photoURL} alt='' />
+                            <span>{googleUser?.displayName || user?.user_name}</span>
                             {toggleUserDropdown ?
                                 <ArrowDropUpIcon /> :
                                 <ArrowDropDownIcon />}

@@ -97,8 +97,8 @@ const RightBoxSlider = () => {
                                                 )}
                                             </Link>
                                             <div className={styles.priceBox}>
-                                                <p>{book?.sell_price}</p>
-                                                <p>{book?.original_price}</p>
+                                                <p>Tk. {book?.sell_price}</p>
+                                                <p>Tk. {book?.original_price}</p>
                                                 <span className={styles.discount}>- {book?.current_discount}%</span>
                                             </div>
                                         </div>

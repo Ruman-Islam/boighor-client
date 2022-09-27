@@ -5,6 +5,8 @@ import auth from '../firebase/firebaseConfig';
 const PrivateRoute = () => {
     const location = useLocation();
     const [user, loading,] = useAuthState(auth);
+    // const token = localStorage.getItem("accessToken");
+    console.log(user, 'user from private route');
 
     if (loading) {
         return <h1>Loading...</h1>

@@ -7,29 +7,39 @@ import Rating from 'react-rating';
 import RatingStars from './RatingStars';
 import styles from '../../styles/BookDetail/BookDetail.module.css';
 import fetcher from '../../api/axios';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase/firebaseConfig';
+import { fetchAUser } from '../../redux/user/userSlice';
 
 const ReviewRating = () => {
+    const [googleUser, ,] = useAuthState(auth);
     const dispatch = useDispatch();
     const [isCollapse, setIsCollapse] = useState(false);
     const [givenRatings, setGivenRatings] = useState(null);
     const [hover, setHover] = useState(null);
     const { book, rating, totalRatings } = useSelector((state) => state?.bookDetailReducer);
+    const { user } = useSelector((state) => state.userReducer)
+
+
+    useEffect(() => {
+        dispatch(fetchAUser(googleUser?.email))
+    }, [googleUser])
 
     useEffect(() => {
         if (givenRatings) {
             dispatch(fetchUpdateRating({ id: book._id, rating: givenRatings }));
         }
-    }, [givenRatings, dispatch, book]);
+    }, []);
 
     const submitReview = async (e) => {
         e.preventDefault();
         const review = {
             id: book._id,
-            name: "Ruman Islam",
+            name: user?.user_name,
             review: e.target.review.value,
             date: new Date().toLocaleDateString(),
-            rating: givenRatings ? givenRatings : 0,
-            imgURL: 'https://i.ibb.co/bQtrt7M/profile-Image.png',
+            // rating: givenRatings ? givenRatings : 0,
+            imgURL: user?.photoURL,
         }
         try {
             const url = 'book/add_review_to_review'

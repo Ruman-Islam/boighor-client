@@ -10,6 +10,7 @@ const Cart = () => {
     const [cart, setCart] = useCart(items);
     const [totalPrice, setTotalPrice] = useState(0);
 
+
     useEffect(() => {
         const savedItems = [];
         const cartItems = localStorage.getItem('shopping-cart')

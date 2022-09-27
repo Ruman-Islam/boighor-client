@@ -83,14 +83,14 @@ const HomeProduct3 = () => {
                                             {book?.title?.slice(0, 31)}
                                         </Link>
                                         <div className={styles.specialBookPriceBox}>
-                                            <p>{book?.sell_price}
+                                            <p>Tk. {book?.sell_price}
                                                 {!!book?.original_price &&
                                                     <span>
-                                                        {book?.original_price}
+                                                        Tk. {book?.original_price}
                                                     </span>}
                                             </p>
                                             {!!book?.current_discount &&
-                                                <span className={styles.discount}>-{book?.current_discount}</span>}
+                                                <span className={styles.discount}>{book?.current_discount}%</span>}
                                         </div>
                                     </div>
                                 </div>

@@ -5,7 +5,6 @@ import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/pagination";
 import { Grid, Pagination } from "swiper";
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
@@ -104,31 +103,33 @@ const HomeProduct1 = () => {
                                         </Link>
                                         <div className={styles.priceBox}>
                                             <p>
-                                                {book?.sell_price}
+                                                Tk. {book?.sell_price}
                                             </p>
                                             {(!!book?.original_price) &&
                                                 <p>
-                                                    {book?.original_price}
+                                                    Tk. {book?.original_price}
                                                 </p>}
                                             {
                                                 (!!book?.current_discount) &&
                                                 <span className={styles.discount}>
-                                                    - {book?.current_discount}%
+                                                    {book?.current_discount}%
                                                 </span>
                                             }
 
                                         </div>
                                     </div>
                                     <div className={styles.bookActionButtons}>
-                                        <a onClick={() => addToCart(book)}
-                                            title='Add to Cart'
-                                            className={styles.bookActionBtn}>
-                                            <AddShoppingCartIcon />
-                                        </a>
-                                        <Link to="/" title='Add to Wish List'
+                                        {book?.quantity > 0 &&
+                                            <a onClick={() => addToCart(book)}
+                                                title='Add to Cart'
+                                                className={styles.bookActionBtn}>
+                                                <AddShoppingCartIcon />
+                                            </a>}
+
+                                        {/* <Link to="/" title='Add to Wish List'
                                             className={styles.bookActionBtn}>
                                             <FavoriteBorderIcon />
-                                        </Link>
+                                        </Link> */}
                                         <Link to={`/book/${book?._id}`}
                                             title='View Details'
                                             className={styles.bookActionBtn}>

@@ -90,7 +90,7 @@ const BasicInfo = ({ rating, book }) => {
                     </p>}
                 {!!book?.quantity &&
                     <p className={styles.stockWarning}>* স্টক আউট হওয়ার আগেই অর্ডার করুন</p>}
-                {!!book?.offers?.length &&
+                {!!book?.offers === '' &&
                     <div className={styles.offers}>
                         <span>Offers:</span>
                         <select defaultValue={0}>
