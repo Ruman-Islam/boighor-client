@@ -6,7 +6,7 @@ const PaymentRoute = () => {
     const location = useLocation();
     const [user, loading,] = useAuthState(auth);
     // const token = localStorage.getItem("accessToken");
-    console.log(user, 'user from payment route');
+    // console.log(user, 'user from payment route');
 
     if (loading) {
         return <h1>Loading...</h1>

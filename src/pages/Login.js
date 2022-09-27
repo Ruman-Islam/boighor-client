@@ -9,7 +9,7 @@ import auth from '../firebase/firebaseConfig';
 import { useAuthState, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import styles from '../styles/Login/Login.module.css';
 import { useLocation, useNavigate } from 'react-router-dom';
-// import UseToken from '../hooks/UseToken';
+import UseToken from '../hooks/UseToken';
 
 const Login = () => {
     // const { register, handleSubmit, formState: { errors } } = useForm();
@@ -19,13 +19,13 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
-    // const { token } = UseToken(googleUser);
+    const { token } = UseToken(googleUser);
 
 
 
     useEffect(() => {
-        if (googleUser) navigate(from, { replace: true });
-    }, [from, googleUser, navigate]);
+        if (token) navigate(from, { replace: true });
+    }, [from, token, navigate]);
 
 
     return (
